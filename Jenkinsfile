@@ -11,7 +11,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 //sh
-                bat "docker build -t='testtaha/seleniumdocker' ."
+                bat "docker build -t='testtaha/selenium-docker' ."
             }
         }
         stage('Push Image') {
@@ -19,8 +19,8 @@ pipeline {
 			    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
                     //sh
 			        bat "docker login --username=${user} --password=${pass}"
-			        bat "docker push testtaha/seleniumdocker:latest"
-			    }                           
+			        bat "docker push testtaha/selenium-docker:latest"
+			    }
             }
         }
     }
